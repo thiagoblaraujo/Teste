@@ -19,14 +19,14 @@ export class AnalistasComponent implements OnInit {
   }
 
   deleteAnalista(analista){
-    if (confirm("Are you sure you want to delete " + analista.name + "?")) {
+    if (confirm("Tem certeza que deseja deletar: " + analista.name + "?")) {
       var index = this.analistas.indexOf(analista);
       this.analistas.splice(index, 1);
 
       this.analistasService.deleteAnalista(analista.id)
         .subscribe(null,
           err => {
-            alert("Could not delete user.");
+            alert("Não foi possível deletar o analista!");
             // Revert the view back to its original state
             this.analistas.splice(index, 0, analista);
           });

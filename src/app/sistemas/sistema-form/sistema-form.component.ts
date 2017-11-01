@@ -2,36 +2,36 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { Empresa } from '../shared/empresa';
-import { EmpresasService } from '../shared/empresa.service';
+import { Sistema } from '../shared/sistema';
+import { SistemasService } from '../shared/sistema.service';
 import { BasicValidators } from '../../shared/basic-validators';
 
 @Component({
-  selector: 'app-empresa-form',
-  templateUrl: './empresa-form.component.html',
-  styleUrls: ['./empresa-form.component.css']
+  selector: 'app-sistema-form',
+  templateUrl: './sistema-form.component.html',
+  styleUrls: ['./sistema-form.component.css']
 })
-export class EmpresaFormComponent implements OnInit {
+export class SistemaFormComponent implements OnInit {
 
   form: FormGroup;
   title: string;
-  empresa: Empresa = new Empresa();
+  sistema: Sistema = new Sistema();
   constructor(
     FormBuilder: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
-    private empresaService: EmpresasService
+    private sistemaService: SistemasService
   ) { 
       this.form = FormBuilder.group({
-      name: ['', [
+      sigla: ['', [
        Validators.required,
-       Validators.minLength(3)
+       Validators.maxLength(5)
       ]],
-      razaoSocial: ['', [
+      nome: ['', [
         Validators.required,
         Validators.minLength(10)
         ]],
-      cnpj: [],
+      descricao: [],
     });
 
     
@@ -41,14 +41,14 @@ export class EmpresaFormComponent implements OnInit {
     var id = this.route.params.subscribe(params => {
       var id = params['id'];
 
-      this.title = id ? 'Alterar Empresa' : 'Nova Empresa';
+      this.title = id ? 'Alterar Sistema' : 'Novo Sistema';
 
       if (!id)
         return;
 
-      this.empresaService.getEmpresa(id)
+      this.sistemaService.getSistema(id)
         .subscribe(
-          empresa => this.empresa = empresa,
+          sistema => this.sistema = sistema,
           response => {
             if (response.status == 404) {
               this.router.navigate(['NotFound']);
@@ -61,15 +61,14 @@ export class EmpresaFormComponent implements OnInit {
 
   save() {
     var result,
-        empresaValue = this.form.value;
+        sistemaValue = this.form.value;
 
-    if (empresaValue.id){
-      result = this.empresaService.updateEmpresa(empresaValue);
+    if (sistemaValue.id){
+      result = this.sistemaService.updateSistema(sistemaValue);
     } else {
-      result = this.empresaService.addEmpresa(empresaValue);
+      result = this.sistemaService.addSistema(sistemaValue);
     }
 
-    result.subscribe(data => this.router.navigate(['empresas']));
+    result.subscribe(data => this.router.navigate(['sistemas']));
   }
 }
-

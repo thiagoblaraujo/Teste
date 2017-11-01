@@ -4,7 +4,7 @@
     
     <div class="row">
       <div class="input-field col s12">
-        <i class="material-icons prefix">cnpj</i>
+        
         <input id="cnpj" type="text" class="validate"
                [(ngModel)]="empresa.cnpj" formControlName="cnpj">
         <label for="cnpj" [class.active]="empresa.razaoSocial">CNPJ</label>
@@ -13,7 +13,7 @@
        
     <div class="row">
       <div class="input-field col s12">
-        <i class="material-icons prefix">account_circle</i>
+        
         <input id="name" type="text" class="validate"
                [(ngModel)]="empresa.name" formControlName="name"
                [class.invalid]="form.controls['name'].touched && !form.controls['name'].valid"
@@ -27,7 +27,7 @@
     </div>    
     <div class="row">
       <div class="input-field col s12">
-        <i class="material-icons prefix">razaoSocial</i>
+       
         <input id="razaoSocial" type="text" class="validate"
                [(ngModel)]="empresa.razaoSocial" formControlName="razaoSocial">
         <label for="razaoSocial" [class.active]="empresa.razaoSocial">Razão Social</label>

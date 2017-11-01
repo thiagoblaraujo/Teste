@@ -5,16 +5,16 @@
 <table>
   <thead>
   <tr>
-    <th data-field="name">Name</th>
-    <th data-field="name">Email</th>
-    <th data-field="name">Edit</th>
-    <th data-field="name">Delete</th>
+    <th data-field="nome">Nome</th>
+    <th data-field="email">E-mail</th>
+    <th data-field="editar">Editar</th>
+    <th data-field="deletar">Deletar</th>
   </tr>
   </thead>
 
   <tbody>
     <tr *ngFor="let analista of analistas">
-      <td>{{ analista.name }}</td>
+      <td>{{ analista.nome }}</td>
       <td>{{ analista.email }}</td>
       <td>
         <a [routerLink]="['/analistas', analistas.id]">

@@ -14,7 +14,8 @@ import { analistasRouting } from "./analistas/analistas.routing";
 import { AnalistasModule } from "./analistas/analistas.module";
 import { empresasRouting } from "./empresas/empresas.routing";
 import { EmpresasModule } from "./empresas/empresas.module";
-
+import { sistemasRouting } from "./sistemas/sistemas.routing";
+import { SistemasModule } from "./sistemas/sistemas.module";
 
 
 
@@ -34,6 +35,8 @@ import { EmpresasModule } from "./empresas/empresas.module";
     analistasRouting,
     EmpresasModule,
     empresasRouting,
+    SistemasModule,
+    sistemasRouting,
     routing
   ],
   providers: [],

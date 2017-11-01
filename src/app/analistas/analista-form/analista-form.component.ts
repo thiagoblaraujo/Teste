@@ -31,7 +31,7 @@ export class AnalistaFormComponent implements OnInit {
       email: ['', [
         Validators.required,
         BasicValidators.email
-        //Validators.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
+        //Validators.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"),
       ]],
       phone: [],
     });
@@ -41,7 +41,7 @@ export class AnalistaFormComponent implements OnInit {
     var id = this.route.params.subscribe(params => {
       var id = params['id'];
 
-      this.title = id ? 'Edit Analista' : 'New Analista';
+      this.title = id ? 'Alterar Analista' : 'Novo Analista';
 
       if (!id)
         return;
